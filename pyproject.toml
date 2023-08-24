@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "doc-explanation"
+version = "0.1.0"
+description = ""
+authors = ["jumtras <data0science0acc@gmail.com>"]
+readme = "README.md"
+packages = [{include = "doc_explanation"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+include_trailing_comma = true
+multi_line_output = 3
+line_length = 150
+profile = "black"
+known_first_party = "doc_explanation/"
+
+[tool.mypy]
+files = [
+    "doc_explanation",
+]
+ignore_missing_imports = true
+
+[tool.black]
+line-length=150
