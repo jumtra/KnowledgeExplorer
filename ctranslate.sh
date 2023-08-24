@@ -1,0 +1,1 @@
+ct2-transformers-converter --model rinna/bilingual-gpt-neox-4b-instruction-sft --quantization int8_float16 --output_dir mymodel2 --force
