@@ -9,7 +9,7 @@ from doc_explanation.common.config_manager import ConfigManager
 class BaseModel(ABC):
     def __init__(self, config_manager: ConfigManager, *args, **kwargs) -> None:
         self.config_manager = config_manager
-        self.device = "cpu"#"cuda" if torch.cuda.is_available() else "cpu"
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
         self.set_params()
         self.build_model()
 
