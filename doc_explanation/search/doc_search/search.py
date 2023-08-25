@@ -8,7 +8,7 @@ from .query import get_search_words
 from .sentence import Sentence
 
 
-def doc_search(path_folder: str, list_words: list[str]) -> SearchedDocument:
+def doc_search(path_folder: str, list_words: list[str],max_doc:int) -> SearchedDocument:
     """path_folderから検索クエリを含むmdファイルを抽出"""
 
     list_docs = []
@@ -22,13 +22,13 @@ def doc_search(path_folder: str, list_words: list[str]) -> SearchedDocument:
                 is_target = True
         list_docs.append(Document(contents=docs, path_file=str(path_file), count=count, is_target=is_target))
 
-    return SearchedDocument(list_docs=list_docs, max_docs=5)
+    return SearchedDocument(list_docs=list_docs, max_docs=max_doc)
 
 
-def sentence_search(path_folder: str, text: str):
+def sentence_search(path_folder: str, text: str,max_doc:int = 5):
     """"""
     list_words = get_search_words(text)
-    searched_doc = doc_search(path_folder=path_folder, list_words=list_words)
+    searched_doc = doc_search(path_folder=path_folder, list_words=list_words,max_doc=max_doc)
 
     sentence = Sentence(list_words=list_words, list_doc=searched_doc.list_top_docs)
 

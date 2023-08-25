@@ -1,0 +1,16 @@
+
+
+input:
+  model_path: ./model_folder
+
+search:
+  doc_search:
+    
+
+  vec_search:
+      embedding_model: "all-MiniLM-L6-v2"
+      max_results: 15
+
+generate:
+  model_name: "Jumtra/rinna-3.6b-tune-ep5"
+  use_fast: True # True if use Jumtra model else False
