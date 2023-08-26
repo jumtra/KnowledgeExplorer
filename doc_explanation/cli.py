@@ -85,7 +85,6 @@ def main():
             logger.info(f"\n回答{i}：" + text)
     return_text = format_return(question=question, list_answer=list_answer, list_result=list_result)
     logger.info(return_text)
-    print(return_text)
 
 
 if __name__ == "__main__":
