@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
@@ -17,6 +17,7 @@ class SearchedDocument:
 
     list_docs: list[Document]
     max_docs: int
+    list_top_docs: list[Document] = field(default_factory=list)
     is_exist: bool = True
 
     def __post_init__(self):

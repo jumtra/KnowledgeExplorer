@@ -1,10 +1,13 @@
 import subprocess
+from logging import getLogger
 from pathlib import Path
 
 import ctranslate2
 import transformers
 
 from .base_model import BaseModel
+
+logger = getLogger(__name__)
 
 
 class CtranslatedModel(BaseModel):
@@ -36,17 +39,19 @@ class CtranslatedModel(BaseModel):
 
         try:
             subprocess.run(command, check=True)
-            print("Conversion completed successfully.")
+            logger.info("Conversion completed successfully.")
         except subprocess.CalledProcessError as e:
-            print("Conversion failed. Error:", e)
+            logger.error("Conversion failed. Error:", e)
 
     def generate(self, prompt: str) -> str:
+        logger.info("回答を生成")
         tokens = self.tokenizer.convert_ids_to_tokens(self.tokenizer.encode(prompt, add_special_tokens=False))
         results = self.model.generate_batch(
             [tokens],
             max_length=2048,
-            sampling_topk=50,
-            sampling_temperature=0.001,
+            sampling_topk=100,
+            sampling_temperature=0.2,
+            repetition_penalty=1.05,
             include_prompt_in_result=False,
             return_end_token=False,
             end_token=[self.tokenizer.eos_token_id, self.tokenizer.pad_token_id],

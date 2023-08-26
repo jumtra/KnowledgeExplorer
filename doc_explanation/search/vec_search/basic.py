@@ -15,6 +15,7 @@
 
 from typing import List
 
+import torch
 from annoy import AnnoyIndex
 from sentence_transformers import SentenceTransformer
 
@@ -34,6 +35,7 @@ class BasicEmbeddingsIndex(EmbeddingsIndex):
         self._items = []
         self._embeddings = []
         self.embedding_model = embedding_model
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
         # When the index is provided, it means it's from the cache.
         self._index = index
@@ -44,7 +46,7 @@ class BasicEmbeddingsIndex(EmbeddingsIndex):
 
     def _init_model(self):
         """Initialize the model used for computing the embeddings."""
-        self._model = SentenceTransformer(self.embedding_model)
+        self._model = SentenceTransformer(self.embedding_model, device=self.device)
 
     def _get_embeddings(self, texts: List[str]) -> List[List[float]]:
         """Compute embeddings for a list of texts."""

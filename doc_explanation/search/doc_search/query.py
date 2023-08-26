@@ -1,13 +1,15 @@
-import MeCab
+from logging import getLogger
+
+from janome.tokenizer import Tokenizer
 from nltk.corpus import wordnet
 
-__all__ = ["get_search_words"]
+logger = getLogger(__name__)
 
 
 def extract_nouns(text):
     """文章から単語を抽出する関数"""
-    mecab = MeCab.Tagger("-Ochasen")
-    nouns = [line.split()[2] for line in mecab.parse(text).splitlines() if ("名詞" in line.split()[-1]) and ("非自立" not in line.split()[-1])]
+    t = Tokenizer()
+    nouns = [token.surface for token in t.tokenize(text) if "名詞" in token.part_of_speech and not "非自立" in token.part_of_speech]
     return nouns
 
 
@@ -29,12 +31,15 @@ def extract_synonyms(word: str) -> set[str]:
 
 def get_search_words(text: str) -> list[str]:
     """質問文から検索ワードを抽出する関数"""
+    logger.info("検索クエリを生成")
     keywords = extract_nouns(text)
 
     n_2 = n_grams(keywords, 2)
     n_3 = n_grams(keywords, 3)
+    n_4 = n_grams(keywords, 4)
 
-    if n_2 == n_3:
+    if len(n_2) == len(n_3) == len(n_4) == 0:
         return keywords
-    search_words = n_2 + n_3
+
+    search_words = n_2 + n_3 + n_4
     return search_words
