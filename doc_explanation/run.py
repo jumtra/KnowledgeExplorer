@@ -23,7 +23,7 @@ def set_args(config_manager: ConfigManager, data_path: str, max_doc: int, max_re
     return config_manager
 
 
-def doc_explanation(data_path: str, question: str, max_doc: int, max_results: int, generate_num: int) -> None:
+def doc_explanation(data_path: str, question: str, max_doc: int, max_results: int, generate_num: int) -> str:
     logger = add_log_handler(".")
     config_manager = ConfigManager.from_yaml(config_yaml_path="config.yaml", config_dir="doc_explanation/config")
 
@@ -36,8 +36,9 @@ def doc_explanation(data_path: str, question: str, max_doc: int, max_results: in
 
     # 早期リターン
     if len(list_words) == 0:
-        logger.info("検索クエリを生成できませんでした。質問文章を変更してください。")
-        return
+        return_text = "検索クエリを生成できませんでした。質問文章を変更してください。"
+        logger.info(return_text)
+        return return_text
 
     log_text = "検索クエリ："
     for word in list_words:
@@ -48,8 +49,9 @@ def doc_explanation(data_path: str, question: str, max_doc: int, max_results: in
 
     # 早期リターン
     if searched_sentences.is_not_exist:
-        logger.info("検索結果が存在しません。")
-        return
+        return_text = "検索結果が存在しません。"
+        logger.info(return_text)
+        return return_text
 
     searched_vectors = VectorSearch(
         list_sentence=searched_sentences.list_sentence, embedding_model=config_manager.config.search.vec_search.embedding_model
@@ -58,8 +60,9 @@ def doc_explanation(data_path: str, question: str, max_doc: int, max_results: in
     list_result = searched_vectors.search_relevant_chunks(text=question, max_results=config_manager.config.search.vec_search.max_results)
     # 早期リターン
     if len(list_result) == 0:
-        logger.info("質問の参考になる文章が存在しませんでした。")
-        return
+        return_text = "質問の参考になる文章が存在しませんでした。"
+        logger.info(return_text)
+        return return_text
 
     list_result = [{"text": result.text, "num": result.num, "file_name": result.file_name} for result in list_result]
     list_text = [dict_result["text"] for dict_result in list_result]
@@ -86,4 +89,4 @@ def doc_explanation(data_path: str, question: str, max_doc: int, max_results: in
 
     return_text = format_return(question=question, list_answer=list_answer, list_result=list_result)
     logger.info(return_text)
-    print(return_text)
+    return return_text
