@@ -49,9 +49,9 @@ class CtranslatedModel(BaseModel):
         results = self.model.generate_batch(
             [tokens],
             max_length=2048,
-            sampling_topk=100,
-            sampling_temperature=0.2,
-            repetition_penalty=1.09,
+            sampling_topk=80,
+            sampling_temperature=0.5,
+            repetition_penalty=1.1,
             include_prompt_in_result=False,
             return_end_token=False,
             end_token=[self.tokenizer.eos_token_id, self.tokenizer.pad_token_id],
