@@ -13,7 +13,7 @@ def main():
         [sg.Text("回答の生成数"), sg.Slider(range=(1, 5), default_value=1, orientation="h", key="generate_num")],
         [sg.Button("実行"), sg.Button("リセット")],
         [sg.Text("出力")],
-        [sg.Output(size=(120, 20), key="output")],
+        [sg.Output(size=(135, 20), key="output")],
     ]
 
     window = sg.Window("ドキュメント説明AI", layout)

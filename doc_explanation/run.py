@@ -81,7 +81,9 @@ def doc_explanation(data_path: str, question: str, max_doc: int, max_results: in
     logger.info(f"\n検索結果：{result}")
 
     if len(list_answer) == 0:
-        logger.info(f"\n回答：回答は生成されませんでした。")
+        return_text = "回答は生成されませんでした。"
+        logger.info(f"\n回答：{return_text}")
+        return return_text
 
     else:
         for i, text in enumerate(list_answer):

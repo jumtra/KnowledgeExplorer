@@ -51,7 +51,7 @@ class CtranslatedModel(BaseModel):
             max_length=2048,
             sampling_topk=100,
             sampling_temperature=0.2,
-            repetition_penalty=1.1,
+            repetition_penalty=1.05,
             include_prompt_in_result=False,
             return_end_token=False,
             end_token=[self.tokenizer.eos_token_id, self.tokenizer.pad_token_id],
