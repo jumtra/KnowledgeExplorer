@@ -39,7 +39,8 @@ class SearchedDocument:
             self.list_top_docs = list_docs
             return
 
-        th_count = sorted(list_count)[self.max_docs - 1]
+        # 検査ワードを含む数が多いドキュメントの上位max_docsのみを残す
+        th_count = list(reversed([v + i for i, v in enumerate(sorted(list_count))]))[self.max_docs - 1]
         list_top_docs = []
         for docs in self.list_docs:
             if docs.count >= th_count:
