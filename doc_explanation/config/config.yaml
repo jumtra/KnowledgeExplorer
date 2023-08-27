@@ -6,12 +6,12 @@ input:
 
 search:
   doc_search:
-    max_doc: 5
+    max_doc: 10
   vec_search:
-    max_results: 15
+    max_results: 30
     embedding_model: "all-MiniLM-L6-v2"
 
 generate:
-  generate_num: 3
+  generate_num: 1
   model_name: "Jumtra/rinna-3.6b-tune-ep5"
   use_fast: True # True if use Jumtra model else False
