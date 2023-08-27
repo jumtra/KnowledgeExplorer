@@ -19,7 +19,7 @@ class ChunkedSentence:
     def __post_init__(self):
         self.text = remove_noise(self.body)
         self.meta = self.title + "<sep>" + self.body
-        self.div = self.title.split(" - ")[0]
+        self.div, self.title = self.title.split(" - ")
 
 
 @dataclass
