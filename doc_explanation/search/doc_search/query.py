@@ -41,5 +41,5 @@ def get_search_words(text: str) -> list[str]:
     if len(n_2) == len(n_3) == len(n_4) == 0:
         return keywords
 
-    search_words = keywords + n_2 + n_3 + n_4
+    search_words = n_2 + n_3 + n_4
     return search_words
