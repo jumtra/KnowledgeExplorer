@@ -83,7 +83,7 @@ def doc_explanation(data_path: str, question: str, max_doc: int, max_results: in
     if len(list_answer) == 0:
         return_text = "回答は生成されませんでした。"
         logger.info(f"\n回答：{return_text}")
-        return return_text
+        list_answer.append(return_text)
 
     else:
         for i, text in enumerate(list_answer):
