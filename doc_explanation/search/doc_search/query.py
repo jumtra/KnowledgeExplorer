@@ -42,4 +42,4 @@ def get_search_words(text: str) -> list[str]:
         return keywords
 
     search_words = n_2 + n_3 + n_4
-    return search_words
+    return list(set(search_words))

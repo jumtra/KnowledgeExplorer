@@ -10,6 +10,7 @@ from .preprocess import split_markdown_in_topic_chunks
 class ChunkedSentence:
     """チャンクされた文章を保存するデータクラス"""
 
+    div: str
     title: str
     body: str
     num: int
@@ -19,7 +20,6 @@ class ChunkedSentence:
     def __post_init__(self):
         self.text = remove_noise(self.body)
         self.meta = self.title + "<sep>" + self.body
-        self.div, self.title = self.title.split(" - ")
 
 
 @dataclass
@@ -37,14 +37,14 @@ class Sentence:
             return
         for doc in self.list_doc:
             for num, chunked_sentence in enumerate(split_markdown_in_topic_chunks(doc.contents)):
-                title = chunked_sentence["title"]
+                div, title = chunked_sentence["title"].split(" - ")
                 body = chunked_sentence["body"]
                 count = self.count_words(title=title, body=body)
                 if count > 0:
                     file_name = doc.path_file.split("/")[-1]
-                    list_target_text.append(ChunkedSentence(title=title, body=body, file_name=file_name, num=num, count=count))
+                    list_target_text.append(ChunkedSentence(div=div, title=title, body=body, file_name=file_name, num=num, count=count))
         self.list_sentence = list_target_text
-        if len(self.list_sentence) > 0:
+        if len(self.list_sentence) > 1:
             self.is_not_exist = False
 
     def count_words(self, title: str, body: str) -> int:
