@@ -9,7 +9,7 @@ def main():
         [sg.Text("質問"), sg.InputText(key="question", size=(100, 1))],
         [sg.Text("フォルダパス"), sg.InputText(key="data_path")],
         [sg.Text("回答に使用するドキュメントの最大数"), sg.Slider(range=(1, 20), default_value=10, orientation="h", key="max_doc")],
-        [sg.Text("回答に使用する文章の最大数"), sg.Slider(range=(1, 50), default_value=30, orientation="h", key="max_results")],
+        [sg.Text("回答に使用する文章の最大数"), sg.Slider(range=(1, 30), default_value=5, orientation="h", key="max_results")],
         [sg.Text("回答の生成数"), sg.Slider(range=(1, 5), default_value=1, orientation="h", key="generate_num")],
         [sg.Button("実行"), sg.Button("リセット")],
         [sg.Text("出力")],
