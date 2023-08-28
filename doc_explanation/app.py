@@ -24,7 +24,7 @@ def app():
         data_path = gr.Textbox(label="フォルダパス", elem_id="data", placeholder="ドキュメントの絶対パスを指定してください。")
         with gr.Accordion(label="詳細な設定", open=False):
             max_doc = gr.Slider(minimum=1, maximum=20, value=10, step=1, label="回答に使用するドキュメントの最大数", interactive=True)
-            max_results = gr.Slider(minimum=1, maximum=30, value=5, step=1, label="回答に使用する文章の最大数", interactive=True)
+            max_results = gr.Slider(minimum=1, maximum=30, value=15, step=1, label="回答に使用する文章の最大数", interactive=True)
             generate_num = gr.Slider(minimum=1, maximum=5, value=1, step=1, label="回答の生成数", interactive=True)
         outputbox = gr.Textbox(label="出力", elem_id="outputbox")
         submit_btn = gr.Button("実行", variant="primary")
