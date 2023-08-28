@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from doc_explanation.answer.answer_format import format_return
 from doc_explanation.answer.model.ctranslate import CtranslatedModel
 from doc_explanation.answer.prompt import PROMPT
@@ -29,7 +31,7 @@ def main():
     # set argparse
     config_manager = set_args(parser=parser, config_manager=config_manager)
 
-    path_folder = config_manager.config.input.data_path
+    path_folder = str(Path(config_manager.config.input.data_path))
     question = parser.question
     logger.info(f"質問：{question}")
     list_words = get_search_words(question)

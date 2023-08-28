@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from doc_explanation.answer.answer_format import format_return
 from doc_explanation.answer.model.ctranslate import CtranslatedModel
 from doc_explanation.answer.prompt import PROMPT
@@ -30,7 +32,7 @@ def doc_explanation(data_path: str, question: str, max_doc: int, max_results: in
     # set argparse
     config_manager = set_args(config_manager=config_manager, data_path=data_path, max_doc=max_doc, max_results=max_results, generate_num=generate_num)
 
-    path_folder = config_manager.config.input.data_path
+    path_folder = Path(config_manager.config.input.data_path)
     logger.info(f"質問：{question}")
     list_words = get_search_words(question)
 
