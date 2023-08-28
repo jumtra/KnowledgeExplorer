@@ -31,10 +31,13 @@ def main():
             generate_num = int(values["generate_num"])
 
             if question and data_path:
-                output_text = doc_explanation(
-                    data_path=data_path, question=question, max_doc=max_doc, max_results=max_results, generate_num=generate_num
-                )
-                window["output"].update(output_text)
+                try:
+                    output_text = doc_explanation(
+                        data_path=data_path, question=question, max_doc=max_doc, max_results=max_results, generate_num=generate_num
+                    )
+                    window["output"].update(output_text)
+                except Exception as e:
+                    window["output"].update(f"エラーが発生しました。\n{e}")
         elif event == "リセット":
             window["question"].update("")
             window["max_doc"].update(5)
