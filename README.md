@@ -104,6 +104,12 @@ poetry run doc_app
 ```sh
 poetry run local_app
 ```
+※以下のようなコードを記述したbashファイルを作成してデスクトップ上からGit for windowsで実行すれば
+アプリのように起動可能
+```sh
+cd "/c/Users/xxx/doc_explanation"　# doc_explanationをクローンしたディレクトリのパス
+poetry run local_app
+```
 
 実行例
 1. 質問を入力
