@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "doc-explanation"
+name = "knowledge_explorer"
 version = "0.1.0"
 description = ""
 authors = ["jumtras"]
