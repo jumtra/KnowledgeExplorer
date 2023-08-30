@@ -2,7 +2,7 @@
 name = "doc-explanation"
 version = "0.1.0"
 description = ""
-authors = ["jumtras <data0science0acc@gmail.com>"]
+authors = ["jumtras"]
 readme = "README.md"
 packages = [{include = "knowledge_explorer"}]
 
