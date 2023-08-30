@@ -1,16 +1,16 @@
 from pathlib import Path
 
-from doc_explanation.answer.answer_format import format_return
-from doc_explanation.answer.model.ctranslate import CtranslatedModel
-from doc_explanation.answer.prompt import PROMPT
-from doc_explanation.common.arg_parser import common_parser
-from doc_explanation.common.config_manager import ConfigManager
-from doc_explanation.common.log_handler import add_log_handler
-from doc_explanation.search.doc_search.query import get_search_words
-from doc_explanation.search.doc_search.search import sentence_search
-from doc_explanation.search.vec_search.search import VectorSearch
+from knowledge_explorer.answer.answer_format import format_return
+from knowledge_explorer.answer.model.ctranslate import CtranslatedModel
+from knowledge_explorer.answer.prompt import PROMPT
+from knowledge_explorer.common.arg_parser import common_parser
+from knowledge_explorer.common.config_manager import ConfigManager
+from knowledge_explorer.common.log_handler import add_log_handler
+from knowledge_explorer.search.doc_search.query import get_search_words
+from knowledge_explorer.search.doc_search.search import sentence_search
+from knowledge_explorer.search.vec_search.search import VectorSearch
 
-__all__ = ["doc_explanation"]
+__all__ = ["knowledge_explorer"]
 
 
 def set_args(config_manager: ConfigManager, data_path: str, max_doc: int, max_results: int, generate_num: int) -> ConfigManager:
@@ -25,9 +25,9 @@ def set_args(config_manager: ConfigManager, data_path: str, max_doc: int, max_re
     return config_manager
 
 
-def doc_explanation(data_path: str, question: str, max_doc: int, max_results: int, generate_num: int) -> str:
+def knowledge_explorer(data_path: str, question: str, max_doc: int, max_results: int, generate_num: int) -> str:
     logger = add_log_handler(".")
-    config_manager = ConfigManager.from_yaml(config_yaml_path="config.yaml", config_dir="doc_explanation/config")
+    config_manager = ConfigManager.from_yaml(config_yaml_path="config.yaml", config_dir="knowledge_explorer/config")
 
     # set argparse
     config_manager = set_args(config_manager=config_manager, data_path=data_path, max_doc=max_doc, max_results=max_results, generate_num=generate_num)

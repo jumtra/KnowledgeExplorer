@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from doc_explanation.search.doc_search.sentence import ChunkedSentence
+from knowledge_explorer.search.doc_search.sentence import ChunkedSentence
 
 
 class EmbeddingsIndex:

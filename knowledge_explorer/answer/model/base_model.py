@@ -3,7 +3,7 @@ from typing import ClassVar
 
 import torch
 
-from doc_explanation.common.config_manager import ConfigManager
+from knowledge_explorer.common.config_manager import ConfigManager
 
 
 class BaseModel(ABC):

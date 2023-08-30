@@ -50,7 +50,7 @@
 前提として、poetryがインストールされている必要があります。
 
 ```sh
-git clone https://github.com/jumtra/doc_explanation.git
+git clone https://github.com/jumtra/knowledge_explorer.git
 poetry install
 ```
 
@@ -61,7 +61,7 @@ poetry install
 - cliで実行する場合
 
 ```sh
-poetry run doc_explain
+poetry run ke
 ```
 以下CLIで有効な引数の一覧
 
@@ -84,7 +84,7 @@ localhostでgradioに接続する形になります。
 ファイアーウォールの設定によっては、ローカルで起動できない可能があります。
 
 ```sh
-poetry run doc_app
+poetry run ke_app
 ```
 
 
@@ -107,7 +107,7 @@ poetry run local_app
 ※以下のようなコードを記述したbashファイルを作成してデスクトップ上からGit for windowsで実行すれば
 アプリのように起動可能
 ```sh
-cd "/c/Users/xxx/doc_explanation"　# doc_explanationをクローンしたディレクトリのパス
+cd "/c/Users/xxx/knowledge_explorer"　# knowledge_explorerをクローンしたディレクトリのパス
 poetry run local_app
 ```
 

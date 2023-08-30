@@ -20,7 +20,7 @@ from time import time
 
 from annoy import AnnoyIndex
 
-from doc_explanation.search.doc_search.sentence import ChunkedSentence
+from knowledge_explorer.search.doc_search.sentence import ChunkedSentence
 
 from .basic import BasicEmbeddingsIndex
 

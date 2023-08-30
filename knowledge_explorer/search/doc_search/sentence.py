@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from doc_explanation.common.remove_noise import remove_noise
+from knowledge_explorer.common.remove_noise import remove_noise
 
 from .document import Document
 from .preprocess import split_markdown_in_topic_chunks

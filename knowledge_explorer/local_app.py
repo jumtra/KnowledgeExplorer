@@ -1,6 +1,6 @@
 import PySimpleGUI as sg
 
-from doc_explanation import doc_explanation
+from knowledge_explorer import knowledge_explorer
 
 
 def main():
@@ -32,7 +32,7 @@ def main():
 
             if question and data_path:
                 try:
-                    output_text = doc_explanation(
+                    output_text = knowledge_explorer(
                         data_path=data_path, question=question, max_doc=max_doc, max_results=max_results, generate_num=generate_num
                     )
                     window["output"].update(output_text)

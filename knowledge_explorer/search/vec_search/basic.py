@@ -19,8 +19,8 @@ import torch
 from annoy import AnnoyIndex
 from sentence_transformers import SentenceTransformer
 
-from doc_explanation.search.doc_search.sentence import ChunkedSentence
-from doc_explanation.search.vec_search.index import EmbeddingsIndex
+from knowledge_explorer.search.doc_search.sentence import ChunkedSentence
+from knowledge_explorer.search.vec_search.index import EmbeddingsIndex
 
 
 class BasicEmbeddingsIndex(EmbeddingsIndex):

@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["jumtras <data0science0acc@gmail.com>"]
 readme = "README.md"
-packages = [{include = "doc_explanation"}]
+packages = [{include = "knowledge_explorer"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -36,9 +36,9 @@ mypy = "^1.5.1"
 isort = "^5.12.0"
 
 [tool.poetry.scripts]
-doc_explain = "doc_explanation.cli:main"
-doc_app = "doc_explanation.app:main"
-local_app = "doc_explanation.local_app:main"
+ke = "knowledge_explorer.cli:main"
+ke_app = "knowledge_explorer.app:main"
+local_app = "knowledge_explorer.local_app:main"
 
 [build-system]
 requires = ["poetry-core"]
@@ -49,11 +49,11 @@ include_trailing_comma = true
 multi_line_output = 3
 line_length = 110
 profile = "black"
-known_first_party = "doc_explanation/"
+known_first_party = "knowledge_explorer/"
 
 [tool.mypy]
 files = [
-    "doc_explanation",
+    "knowledge_explorer",
 ]
 ignore_missing_imports = true
 

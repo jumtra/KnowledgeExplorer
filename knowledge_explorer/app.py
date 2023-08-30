@@ -1,7 +1,6 @@
 import fire
 import gradio as gr
-
-from doc_explanation import doc_explanation
+from knowledge_explorer import knowledge_explorer
 
 
 def clear():
@@ -9,7 +8,7 @@ def clear():
 
 
 def submit(question, data_path, max_doc, max_results, generate_num):
-    text = doc_explanation(data_path=data_path, question=question, max_doc=max_doc, max_results=max_results, generate_num=generate_num)
+    text = knowledge_explorer(data_path=data_path, question=question, max_doc=max_doc, max_results=max_results, generate_num=generate_num)
     return text
 
 

@@ -1,7 +1,7 @@
 from logging import getLogger
 from pathlib import Path
 
-from doc_explanation.common.read_md import read_md
+from knowledge_explorer.common.read_md import read_md
 
 from .document import Document, SearchedDocument
 from .sentence import Sentence
